@@ -7,7 +7,7 @@ def test_defaults_load(tmp_path):
 
 def test_page_count_rounds_up(tmp_path): 
     settings = load("catalog.ini")
-    assert settings.page_count(41) == 2
+    assert settings.page_count(41) == 3
 
 def test_unknown_theme_rejected(tmp_path): 
     bad= tmp_path / "catalog.ini"
