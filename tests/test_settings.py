@@ -3,7 +3,7 @@ import pytest
 from catalog.settings import SettingsError, load
 
 def test_defaults_load(tmp_path):
-    assert load("catalog.ini").theme == "ink"
+    assert load("catalog.ini").theme == "paper"
 
 def test_page_count_rounds_up(tmp_path): 
     settings = load("catalog.ini")
