@@ -1,0 +1,25 @@
+name: settings
+
+on: 
+  push:
+    branches: [main]
+  pull_request:
+
+jobs:
+  validate:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v7
+      - uses: actions/setup-python@v7
+        with:
+          python-version: "3.12"
+      - run: pip install pytest
+      - name: Validate catalog settings
+        run: |
+          python3 -c "
+          import sys; sys.path.insert(0, 'src')
+          from catalog.settings import load
+          s = load('catalog.ini')
+          print(f'theme={s.theme} page_size={s.page_size}')
+          "
+      - run: PYTHONPATH=src pytest tests -q
