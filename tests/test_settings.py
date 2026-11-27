@@ -24,6 +24,6 @@ def test_page_size_bounds(tmp_path):
 def test_size_must_be_numeric(tmp_path): 
     bad = tmp_path / "catalog.ini"
     bad.write_text("[display]\ntheme=ink\npage_size=twenty\n", encoding="utf-8")
-    with pytest.raises(settingsError, match="whole number"):
+    with pytest.raises(SettingsError, match="whole number"):
         load(bad)
                       
